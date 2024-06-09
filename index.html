@@ -87,13 +87,43 @@
             animation: fadeIn 2.5s ease-in-out;
         }
 
-        .success-message {
+        .modal {
             display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 300px;
             text-align: center;
-            color: #28a745;
-            font-size: 18px;
-            margin-top: 20px;
-            animation: fadeIn 1s ease-in-out;
+            border-radius: 8px;
+            animation: slideInUp 0.5s ease-in-out;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -115,8 +145,13 @@
 
             <button type="submit">Send Feedback</button>
         </form>
-        <div class="success-message" id="successMessage">Your feedback was sent successfully!</div>
         <footer>© 2024 Santosh Adhikari</footer>
+    </div>
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <p>Your feedback was sent successfully!</p>
+        </div>
     </div>
     <script>
         document.getElementById('feedbackForm').addEventListener('submit', function(event) {
@@ -125,15 +160,21 @@
             // Clear the form data
             document.getElementById('feedbackForm').reset();
 
-            // Hide the form and show the success message
-            document.querySelector('.container').style.animation = 'fadeOut 1s ease-in-out';
-            setTimeout(function() {
-                document.querySelector('.container').style.display = 'none';
-                document.getElementById('successMessage').style.display = 'block';
-            }, 1000);
+            // Show the success modal
+            var modal = document.getElementById('successModal');
+            modal.style.display = 'block';
 
-            // Show the success message with animation
-            document.getElementById('successMessage').style.animation = 'fadeIn 1s ease-in-out';
+            // Close the modal when the close button is clicked
+            document.getElementById('closeModal').onclick = function() {
+                modal.style.display = 'none';
+            };
+
+            // Close the modal when clicking outside of the modal content
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
         });
     </script>
 </body>
