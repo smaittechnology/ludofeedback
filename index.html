@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback for Ludo Master in Nepal</title>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: black; /* Ensures all text is black */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            animation: slideInUp 1s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: black; /* Ensures header text is black */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: black; /* Ensures label text is black */
+        }
+
+        input, textarea, button {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+            color: black; /* Ensures input text is black */
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: black; /* Ensures footer text is black */
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            color: #28a745;
+            font-size: 18px;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback for Ludo Master in Nepal</h1>
+        <form id="feedbackForm">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+
+            <label for="feedback">Your Feedback</label>
+            <textarea id="feedback" name="feedback" required></textarea>
+
+            <button type="submit">Send Feedback</button>
+        </form>
+        <div class="success-message" id="successMessage">Your feedback was sent successfully!</div>
+        <footer>© 2024 Santosh Adhikari</footer>
+    </div>
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Clear the form data
+            document.getElementById('feedbackForm').reset();
+
+            // Hide the form and show the success message
+            document.querySelector('.container').style.animation = 'fadeOut 1s ease-in-out';
+            setTimeout(function() {
+                document.querySelector('.container').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            }, 1000);
+
+            // Show the success message with animation
+            document.getElementById('successMessage').style.animation = 'fadeIn 1s ease-in-out';
+        });
+    </script>
+</body>
+</html>
