@@ -5,48 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback for Ludo Master in Nepal</title>
     <style>
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideInUp {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
-
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: black; /* Ensures all text is black */
-            margin: 0;
-            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f06, #f93);
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            animation: fadeIn 1.5s ease-in-out;
+            flex-direction: column;
         }
 
         .container {
             background: white;
-            padding: 20px;
+            padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-in-out;
             width: 100%;
             max-width: 500px;
-            animation: slideInUp 1s ease-in-out;
         }
 
         h1 {
+            margin-bottom: 1rem;
+            color: #333;
             text-align: center;
-            margin-bottom: 20px;
-            color: black; /* Ensures header text is black */
+            animation: slideInDown 1s ease-in-out;
         }
 
         form {
@@ -55,127 +44,80 @@
         }
 
         label {
-            margin-bottom: 5px;
-            color: black; /* Ensures label text is black */
+            margin-bottom: 0.5rem;
+            color: #555;
         }
 
-        input, textarea, button {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #ccc;
+        input, textarea {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
             border-radius: 4px;
-            font-size: 16px;
-            width: 100%;
-            color: black; /* Ensures input text is black */
-            animation: fadeIn 2s ease-in-out;
         }
 
         button {
-            background-color: #28a745;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            background: #f06;
             color: white;
+            font-size: 1rem;
             cursor: pointer;
+            transition: background 0.3s ease;
         }
 
         button:hover {
-            background-color: #218838;
+            background: #d05;
         }
 
         footer {
+            margin-top: 2rem;
             text-align: center;
-            margin-top: 20px;
-            color: black; /* Ensures footer text is black */
-            animation: fadeIn 2.5s ease-in-out;
+            color: white;
         }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-            animation: fadeIn 0.5s ease-in-out;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
-        .modal-content {
-            background-color: white;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 300px;
-            text-align: center;
-            border-radius: 8px;
-            animation: slideInUp 0.5s ease-in-out;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Feedback for Ludo Master in Nepal</h1>
-        <form id="feedbackForm">
-            <label for="name">Your Name</label>
+        <form id="feedbackForm" action="mailto:adhikarisantosh039@gmail.com" method="post" enctype="text/plain">
+            <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" required>
-
-            <label for="email">Your Email</label>
+            
+            <label for="email">Your Email:</label>
             <input type="email" id="email" name="email" required>
-
-            <label for="subject">Subject</label>
+            
+            <label for="subject">Subject:</label>
             <input type="text" id="subject" name="subject" required>
-
-            <label for="feedback">Your Feedback</label>
-            <textarea id="feedback" name="feedback" required></textarea>
-
+            
+            <label for="feedback">Your Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="4" required></textarea>
+            
             <button type="submit">Send Feedback</button>
         </form>
-        <footer>© 2024 Santosh Adhikari</footer>
     </div>
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
-            <p>Your feedback was sent successfully!</p>
-        </div>
-    </div>
-    <script>
-        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            // Clear the form data
-            document.getElementById('feedbackForm').reset();
-
-            // Show the success modal
-            var modal = document.getElementById('successModal');
-            modal.style.display = 'block';
-
-            // Close the modal when the close button is clicked
-            document.getElementById('closeModal').onclick = function() {
-                modal.style.display = 'none';
-            };
-
-            // Close the modal when clicking outside of the modal content
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-            };
-        });
-    </script>
+    <footer>
+        © 2024 Santosh Adhikari
+    </footer>
 </body>
 </html>
