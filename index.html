@@ -13,22 +13,26 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #f06, #f93);
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            color: #444;
+            overflow: hidden;
         }
 
         .container {
             background: white;
             padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             animation: fadeIn 1s ease-in-out;
             width: 100%;
             max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         h1 {
@@ -36,6 +40,15 @@
             color: #333;
             text-align: center;
             animation: slideInDown 1s ease-in-out;
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            text-align: center;
+            font-size: 1.2rem;
         }
 
         form {
@@ -45,35 +58,67 @@
 
         label {
             margin-bottom: 0.5rem;
-            color: #555;
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: bold;
+            animation: fadeIn 1s ease-in-out;
         }
 
         input, textarea {
-            margin-bottom: 1rem;
-            padding: 0.5rem;
+            margin-bottom: 1.5rem;
+            padding: 0.75rem;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #6a11cb;
+            box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+            outline: none;
         }
 
         button {
             padding: 0.75rem;
             border: none;
-            border-radius: 4px;
-            background: #f06;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: white;
-            font-size: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
+            animation: fadeIn 1s ease-in-out;
         }
 
         button:hover {
-            background: #d05;
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            transform: scale(1.05);
         }
 
         footer {
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             text-align: center;
             color: white;
+            font-size: 1rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .social-media {
+            margin-top: 1rem;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .social-media a:hover {
+            color: #ffd700;
         }
 
         @keyframes fadeIn {
@@ -100,6 +145,7 @@
 <body>
     <div class="container">
         <h1>Feedback for Ludo Master in Nepal</h1>
+        <p>Give me your feedback then I will fix the bug 🐜</p>
         <form id="feedbackForm" action="mailto:adhikarisantosh039@gmail.com" method="post" enctype="text/plain">
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" required>
@@ -118,6 +164,11 @@
     </div>
     <footer>
         © 2024 Santosh Adhikari
+        <div class="social-media">
+            <a href="https://www.facebook.com/codersantoshadhikari" target="_blank">Facebook</a>
+            <a href="https://www.linkedin.com/in/santosh-adhikari-b24324265/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/codersantoshadhikari" target="_blank">GitHub</a>
+        </div>
     </footer>
 </body>
 </html>
